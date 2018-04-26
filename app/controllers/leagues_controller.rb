@@ -37,8 +37,10 @@ class LeaguesController < ApplicationController
     def close
         league = League.find(params[:league_id])
         league.assign_winner
+
+        league.games.where(winner_id: nil).destroy_all
         
-        redirect_to leagues_path
+        redirect_to league_path(league)
     end 
 
     private 

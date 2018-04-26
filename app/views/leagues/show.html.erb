@@ -4,6 +4,12 @@
     </div>
 <% end %>
 
+<% if @league.winner then %>
+    <div>
+        <strong>This league has is now closed</strong>
+    </div>
+<% end %>
+
 <h1><%= @league.name %></h1>
 <h2>Owned by <%= @league.owner.name %></h2>
 
@@ -13,6 +19,12 @@
 </div>
 
 <hr />
+
+<% if @league.winner %>
+<div>
+    <h1><%= @league.winner.name %> is the winner</h1>
+</div>
+<% end %>
 
 <h3>LeaderBoard</h3>
 
