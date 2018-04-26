@@ -1,5 +1,17 @@
+<% if @league.archived then %>
+    <div>
+        <strong>This league has been archived</strong>
+    </div>
+<% end %>
+
 <h1><%= @league.name %></h1>
-<h2>By <%= @league.owner.name %></h2>
+<h2>Owned by <%= @league.owner.name %></h2>
+
+<div>
+    <%= link_to "Archive League", league_archive_path(@league) %>
+    <%= link_to "Close League", league_close_path(@league) %>
+</div>
+
 <hr />
 
 <h3>LeaderBoard</h3>
