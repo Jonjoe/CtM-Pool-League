@@ -18,19 +18,25 @@ class GamesController < ApplicationController
 
     # ------------ CRUD Actions
     def create
-        game = Game.new(game_params)
-        game.league_id = params[:league_id]
-        game.save
+        league = League.find(params[:league_id])
 
-        redirect_to league_path(params[:league_id])
+        if league.owner = current_user
+            game = Game.new(game_params)
+            game.league = league
+            game.save
+        end 
+
+        redirect_to league_path(league)
     end
 
     def update
     end
     
     def destroy
-        game = Game.find(params[:id])
-        game.destroy
+        if league.owner = current_user
+            game = Game.find(params[:id])
+            game.destroy
+        end
         
         redirect_to league_path(params[:league_id])
     end
@@ -38,17 +44,21 @@ class GamesController < ApplicationController
     # ------------ Bespoke Actions
 
     def player1_won
-        game = Game.find(params[:game_id])
-        game.winner = game.player1
-        game.save
+        if league.owner = current_user
+            game = Game.find(params[:game_id])
+            game.winner = game.player1
+            game.save
+        end
 
         redirect_to league_path(params[:league_id])
     end 
 
     def player2_won
-        game = Game.find(params[:game_id])
-        game.winner = game.player2
-        game.save
+        if league.owner = current_user
+            game = Game.find(params[:game_id])
+            game.winner = game.player2
+            game.save
+        end
 
         redirect_to league_path(params[:league_id])
     end 

@@ -19,10 +19,12 @@
 <h1><%= @league.name %></h1>
 <h2>Owned by <%= @league.owner.name %></h2>
 
-<div>
-    <%= link_to "Archive League", league_archive_path(@league) %>
-    <%= link_to "Close League", league_close_path(@league) %>
-</div>
+<% if @league.owner === current_user %>
+    <div>
+        <%= link_to "Archive League", league_archive_path(@league) %>
+        <%= link_to "Close League", league_close_path(@league) %>
+    </div>
+<% end %>
 
 <hr />
 
@@ -42,15 +44,19 @@
 
 <h3>Games</h3>
 
-<div>
-    <%= link_to "Create a new game", new_league_game_path(@league) %>
-</div>
+<% if @league.owner === current_user %>
+    <div>
+        <%= link_to "Create a new game", new_league_game_path(@league) %>
+    </div>
+<% end %>
 
 <ul>
     <% @league.games.each do |game| %>
         <li>
             <%= game.player1.name %> VS <%= game.player2.name %> - 
-            <%= link_to "Trash game", league_game_path(@league, game), method: :delete %> -
+            <% if @league.owner === current_user %>            
+                <%= link_to "Trash game", league_game_path(@league, game), method: :delete %> -
+            <% end %>
             <%= link_to "View Game", league_game_path(@league, game) %> |
             <% if game.winner %>
                 <strong><%= game.winner.name %> Won!</strong>
