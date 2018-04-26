@@ -5,3 +5,46 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.create!({
+    name: "Admin",
+    email: "admin@admin.admin",
+    role: "admin",
+    password: "password"
+})
+
+25.times do
+    User.create!({
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        role: "user",
+        password: "password"
+    })
+end 
+
+3.times do
+    league = League.create!({
+        name: Faker::Team.name,
+        owner_id: User.find(rand(1...User.all.count)).id
+    })
+
+
+
+    15.times do
+        winner = User.find(rand(1...User.all.count)).id
+        game = league.games.create!({
+            winner_id: winner,
+            player1_id: winner,
+            player2_id: User.find(rand(1...User.all.count)),
+        })
+        game.save
+    end
+
+    score_list_hash = Game.all.group(:winner_id).count
+    ordered_score_list_hash = Hash[score_list_hash.sort_by{|k, v| v}.reverse]
+
+
+    league.winner_id = ordered_score_list_hash.values[0]
+    league.save
+end 

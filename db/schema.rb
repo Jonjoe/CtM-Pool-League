@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_26_090742) do
+ActiveRecord::Schema.define(version: 2018_04_26_091631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 2018_04_26_090742) do
     t.bigint "winner_id"
     t.bigint "player1_id"
     t.bigint "player2_id"
+    t.bigint "league_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_games_on_league_id"
     t.index ["player1_id"], name: "index_games_on_player1_id"
     t.index ["player2_id"], name: "index_games_on_player2_id"
     t.index ["winner_id"], name: "index_games_on_winner_id"
@@ -28,16 +30,25 @@ ActiveRecord::Schema.define(version: 2018_04_26_090742) do
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id"
+    t.integer "owner_id"
+    t.integer "winner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_leagues_on_user_id"
+    t.index ["owner_id"], name: "index_leagues_on_owner_id"
+    t.index ["winner_id"], name: "index_leagues_on_winner_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "encrypted_password", limit: 128
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "games", "users", column: "player1_id"

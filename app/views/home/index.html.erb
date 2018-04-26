@@ -1,0 +1,24 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+
+<h3>Ongoing Leagues</h3>
+<ul>
+    <% @ongoing_leagues.each do |league| %>
+        <li><%= league.name %></li>
+    <% end %>
+</ul>
+
+<h3>Finished Leagues</h3>
+<ul>
+    <% @completed_leagues.each do |league| %>
+        <li><%= league.name %></li>
+    <% end %>
+</ul>
+
+<h3>Overall Board</h3>
+<ol>
+    <% @players_with_scores.each do |players| %>
+        <li><%= league.name %></li>
+    <% end %>
+</ol>
