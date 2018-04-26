@@ -27,6 +27,10 @@ class GamesController < ApplicationController
     end
     
     def destroy
+        game = Game.find(params[:id])
+        game.destroy
+        
+        redirect_to league_path(params[:league_id])
     end
 
     # ------------ Bespoke Actions

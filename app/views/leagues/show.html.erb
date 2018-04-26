@@ -35,11 +35,15 @@
 </ul>
 
 <h3>Games</h3>
-<%= link_to "Create a new game", new_league_game_path(@league) %>
+
+<div>
+    <%= link_to "Create a new game", new_league_game_path(@league) %>
+</div>
+
 <ul>
     <% @league.games.each do |game| %>
         <li>
-            <%= game.player1.name %> VS <%= game.player2.name %> |
+            <%= game.player1.name %> VS <%= game.player2.name %> - <%= link_to "Trash game", league_game_path(@league, game), method: :delete %> |
             <% if game.winner %>
                 <strong><%= game.winner.name %> Won!</strong>
             <% else %>
