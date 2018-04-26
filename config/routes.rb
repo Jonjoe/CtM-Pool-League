@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
   
   resources :users
+  get "/invite" => "users#invite", as: "invite_user"        
+  post "/invite/create" => "users#invite_create", as: "invite_user_create"        
 
   resources :leagues do
     get "/archive" => "leagues#archive", as: "archive"    
