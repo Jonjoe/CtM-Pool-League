@@ -12,9 +12,9 @@
     <% end %>
 </ul>
 
-<h3>Overall Board</h3>
+<h3>Top 5</h3>
 <ol>
     <% @top5_players.each do | score | %>
-        <li><%= score[:user][:name] %> - <%= score[:total]%></li>
+        <li><%= score[:user][:name] %> - <%= score[:total]%> Wins</li>
     <% end %>
 </ol>

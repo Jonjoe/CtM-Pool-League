@@ -2,7 +2,7 @@
 
 <h3>LeaderBoard</h3>
 <ul>
-    <% @league.scores.each do |score| %>
+    <% @league.scores.each do |score| %> 
         <li><%= score[:user][:name] %> - <%= score[:total] %></li>
     <% end %>
 </ul>
@@ -10,6 +10,13 @@
 <h3>Games</h3>
 <ul>
     <% @league.games.each do |game| %>
-        <li><%= game.player1.name %> VS <%= game.player2.name %> - <strong><%= game.winner.name %> Won!</strong></li>
+        <li>
+            <%= game.player1.name %> VS <%= game.player2.name %> |
+            <% if game.winner %>
+                <strong><%= game.winner.name %> Won!</strong>
+            <% else %>
+                <strong> Game has not been played yet </strong>            
+            <% end %>
+        </li>
     <% end %>
 </ul>
