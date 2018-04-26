@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @ongoing_leagues = League.where(user_id: nil)
-    @completed_leagues = League.where.not(user_id: nil)
+    @ongoing_leagues = League.where(winner_id: nil)
+    @completed_leagues = League.where.not(winner_id: nil)
 
-    @players_scores = Games.all.group(:winner).count
+    score_list_hash = Game.all.group(:winner_id).count
+    @players_scores = Hash[score_list_hash.sort_by{|k, v| v}.reverse]
 
     # Grab every game
     # Group by winner

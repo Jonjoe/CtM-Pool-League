@@ -1,7 +1,3 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
-
 <h3>Ongoing Leagues</h3>
 <ul>
     <% @ongoing_leagues.each do |league| %>
@@ -18,7 +14,7 @@
 
 <h3>Overall Board</h3>
 <ol>
-    <% @players_with_scores.each do |players| %>
-        <li><%= league.name %></li>
+    <% @players_scores.each do |key, value| %>
+        <li><%= value %></li>
     <% end %>
 </ol>

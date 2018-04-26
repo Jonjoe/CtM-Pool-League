@@ -29,7 +29,30 @@ end
         owner_id: User.find(rand(1...User.all.count)).id
     })
 
+    4.times do
+        winner = User.find(rand(1...User.all.count)).id
+        game = league.games.create!({
+            winner_id: winner,
+            player1_id: winner,
+            player2_id: User.find(rand(1...User.all.count)),
+        })
+        game.save
+    end
 
+    rand(1...5).times do
+        league.games.create!({
+            winner_id: nil,
+            player1_id: User.find(rand(1...User.all.count)),
+            player2_id: User.find(rand(1...User.all.count)),
+        })
+    end
+end 
+
+12.times do
+    league = League.create!({
+        name: Faker::Team.name,
+        owner_id: User.find(rand(1...User.all.count)).id
+    })
 
     15.times do
         winner = User.find(rand(1...User.all.count)).id
@@ -41,10 +64,5 @@ end
         game.save
     end
 
-    score_list_hash = Game.all.group(:winner_id).count
-    ordered_score_list_hash = Hash[score_list_hash.sort_by{|k, v| v}.reverse]
-
-
-    league.winner_id = ordered_score_list_hash.values[0]
-    league.save
+    league.assign_winner
 end 
