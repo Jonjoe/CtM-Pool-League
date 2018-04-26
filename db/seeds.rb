@@ -69,7 +69,6 @@ end
     league.assign_winner
 end 
 
-
 # Archived Leagues
 3.times do
     league = League.create!({

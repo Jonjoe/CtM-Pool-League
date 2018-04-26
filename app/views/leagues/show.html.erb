@@ -10,6 +10,12 @@
     </div>
 <% end %>
 
+<% if @league.draw_mode then %>
+    <div>
+        <strong>League cannot be closed until there is a winner!</strong>
+    </div>
+<% end %>
+
 <h1><%= @league.name %></h1>
 <h2>Owned by <%= @league.owner.name %></h2>
 

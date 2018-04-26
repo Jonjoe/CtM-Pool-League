@@ -5,8 +5,23 @@ class League < ApplicationRecord
     belongs_to :owner, class_name: "User"
 
     def assign_winner
-        self.winner_id = self.scores[0][:user].id
-        self.save
+        winner_or_drawing_players = self.scores.select{ |hash| 
+            hash[:total] == self.scores[0][:total]
+        }
+
+        pp "--------------"
+        pp winner_or_drawing_players.count
+        pp "--------------"
+
+        if winner_or_drawing_players.count > 1 then
+            self.draw_mode = true
+            self.save
+        else
+            self.draw_mode = false
+            self.winner_id = self.scores[0][:user].id
+            
+            self.save
+        end 
     end 
 
     def every_game_complete
@@ -18,6 +33,8 @@ class League < ApplicationRecord
         
         return true 
     end 
+
+
 
     def scores
         scores_hash = self.games.all.group(:winner_id).count
