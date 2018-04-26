@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   resources :leagues do
     get "/archive" => "leagues#archive", as: "archive"    
     get "/close" => "leagues#close", as: "close"    
-    resources :games
+    resources :games do
+      get "/player1_won" => "games#player1_won", as: "player1_won"    
+      get "/player2_won" => "games#player2_won", as: "player2_won"    
+    end 
   end
 
   root 'home#index'

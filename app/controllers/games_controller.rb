@@ -35,6 +35,22 @@ class GamesController < ApplicationController
 
     # ------------ Bespoke Actions
 
+    def player1_won
+        game = Game.find(params[:game_id])
+        game.winner = game.player1
+        game.save
+
+        redirect_to league_path(params[:league_id])
+    end 
+
+    def player2_won
+        game = Game.find(params[:game_id])
+        game.winner = game.player2
+        game.save
+
+        redirect_to league_path(params[:league_id])
+    end 
+
     private 
 
     def game_params

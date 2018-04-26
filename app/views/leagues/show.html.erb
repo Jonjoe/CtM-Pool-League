@@ -43,7 +43,9 @@
 <ul>
     <% @league.games.each do |game| %>
         <li>
-            <%= game.player1.name %> VS <%= game.player2.name %> - <%= link_to "Trash game", league_game_path(@league, game), method: :delete %> |
+            <%= game.player1.name %> VS <%= game.player2.name %> - 
+            <%= link_to "Trash game", league_game_path(@league, game), method: :delete %> -
+            <%= link_to "View Game", league_game_path(@league, game) %> |
             <% if game.winner %>
                 <strong><%= game.winner.name %> Won!</strong>
             <% else %>
