@@ -1,7 +1,12 @@
 <h3>Ongoing Leagues</h3>
 <ul>
-    <% @ongoing_leagues.each do |league| %>
-        <li><%= league.name %> - <%= link_to "View League", league_path(league) %></li>
+    <% if @ongoing_leagues.count > 0 %>
+        <% @ongoing_leagues.each do |league| %>
+            <li><%= league.name %> - <%= link_to "View League", league_path(league) %></li>
+        <% end %>
+
+    <% else %>
+        <p>You are not part of any leagues</p>
     <% end %>
 </ul>
 

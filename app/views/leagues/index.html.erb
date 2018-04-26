@@ -2,6 +2,13 @@
 
 <%= link_to "Start a league", new_league_path %>
 
+<h3>Your Leagues</h3>
+<ul>
+    <% @your_leagues.each do |league| %>
+        <li><%= league.name %> - <%= link_to "View League", league_path(league) %></li>
+    <% end %>
+</ul>
+
 <h3>Ongoing Leagues</h3>
 <ul>
     <% @ongoing_leagues.each do |league| %>

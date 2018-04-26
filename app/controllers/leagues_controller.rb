@@ -3,6 +3,8 @@ class LeaguesController < ApplicationController
     
     # ------------ Template Methods    
     def index
+        @your_leagues =  League.where(owner_id: current_user.id).where(archived: false)
+
         @ongoing_leagues = League.where(winner_id: nil).where(archived: false)
         @completed_leagues = League.where.not(winner_id: nil).where(archived: false)
 
