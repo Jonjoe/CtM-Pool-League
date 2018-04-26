@@ -1,1 +1,15 @@
 <h1>Game New</h1>
+
+<%= form_for([@league, @game]) do |form| %>
+    <p>Player 1</p>
+    <%= form.select(:player1_id) do %>
+        <%= options_from_collection_for_select(@users, "id", "name") %>
+    <% end %>
+
+    <p>Player 2</p>
+    <%= form.select(:player2_id) do %>
+        <%= options_from_collection_for_select(@users, "id", "name") %>
+    <% end %>
+
+    <%= form.submit %>
+<% end %>
