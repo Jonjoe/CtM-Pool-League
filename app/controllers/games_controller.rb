@@ -20,7 +20,7 @@ class GamesController < ApplicationController
     def create
         league = League.find(params[:league_id])
 
-        if league.owner = current_user
+        if league.owner === current_user
             game = Game.new(game_params)
             game.league = league
             game.save
@@ -33,8 +33,9 @@ class GamesController < ApplicationController
     end
     
     def destroy
-        if league.owner = current_user
-            game = Game.find(params[:id])
+        game = Game.find(params[:id])
+
+        if game.league.owner === current_user
             game.destroy
         end
         
@@ -44,8 +45,9 @@ class GamesController < ApplicationController
     # ------------ Bespoke Actions
 
     def player1_won
-        if league.owner = current_user
-            game = Game.find(params[:game_id])
+        game = Game.find(params[:game_id])
+
+        if game.league.owner === current_user
             game.winner = game.player1
             game.save
         end
@@ -54,8 +56,9 @@ class GamesController < ApplicationController
     end 
 
     def player2_won
-        if league.owner = current_user
-            game = Game.find(params[:game_id])
+        game = Game.find(params[:game_id])
+
+        if game.league.owner === current_user
             game.winner = game.player2
             game.save
         end

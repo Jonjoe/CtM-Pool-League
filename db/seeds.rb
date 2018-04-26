@@ -30,6 +30,49 @@ User.create!({
     })
 end 
 
+
+User.create!({
+    name: "Jonjoe Whitfield",
+    email: "me@jonjoe.io",
+    role: "user",
+    password: "password"
+})
+
+User.create!({
+    name: "Freddie Fallon",
+    email: "wdwe@wdfwe.qwefqwef",
+    role: "user",
+    password: "password"
+})
+
+User.create!({
+    name: "Mary Salemne",
+    email: "wdwe@stuff.qwefqwef",
+    role: "user",
+    password: "password"
+})
+
+User.create!({
+    name: "Francios Something",
+    email: "qwerty@stuff.qwefqwef",
+    role: "user",
+    password: "password"
+})
+
+User.create!({
+    name: "James Ransome",
+    email: "qwerty@stuff.ransome",
+    role: "user",
+    password: "password"
+})
+
+User.create!({
+    name: "Matt Something",
+    email: "matt@something.ransome",
+    role: "user",
+    password: "password"
+})
+
 # Ongoing Leagues
 3.times do
     league = League.create!({

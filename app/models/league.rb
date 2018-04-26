@@ -9,10 +9,6 @@ class League < ApplicationRecord
             hash[:total] == self.scores[0][:total]
         }
 
-        pp "--------------"
-        pp winner_or_drawing_players.count
-        pp "--------------"
-
         if winner_or_drawing_players.count > 1 then
             self.draw_mode = true
             self.save

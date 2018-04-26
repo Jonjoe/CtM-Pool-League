@@ -13,9 +13,6 @@ class Game < ApplicationRecord
         scores_hash = Game.all.group(:winner_id).count
         sorted_scores_hash = Hash[scores_hash.except(nil).sort_by{|k, v| v}.reverse]
 
-        pp "------------------"
-        pp scores_hash.except(nil)
-        pp "------------------"
         scores_array = []
         sorted_scores_hash.each do |score|          
             scores_array.push({
