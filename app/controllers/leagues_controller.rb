@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+    before_action :require_login
+    
     # ------------ Template Methods    
     def index
         @ongoing_leagues = League.where(winner_id: nil).where(archived: false)

@@ -14,6 +14,13 @@ User.create!({
     password: "password"
 })
 
+User.create!({
+    name: "User",
+    email: "user@user.user",
+    role: "user",
+    password: "password"
+})
+
 25.times do
     User.create!({
         name: Faker::Name.name,
