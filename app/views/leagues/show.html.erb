@@ -1,0 +1,8 @@
+<h1><%= @league.name %></h1>
+
+<h3>LeaderBoard</h3>
+<ol>
+    <% @league.scores.each do |key, value| %>
+        <li><%= value %></li>
+    <% end %>
+</ol>

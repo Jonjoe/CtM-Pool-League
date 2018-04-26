@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
   resources :games
   resources :users
-  resources :leagues
+  resources :leagues 
 
   root 'home#index'
 end
