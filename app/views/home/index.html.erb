@@ -14,7 +14,7 @@
 
 <h3>Overall Board</h3>
 <ol>
-    <% @players_scores.each do |key, value| %>
-        <li><%= value %></li>
+    <% @top5_players.each do | score | %>
+        <li><%= score[:user][:name] %> - <%= score[:total]%></li>
     <% end %>
 </ol>

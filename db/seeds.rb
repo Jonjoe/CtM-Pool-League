@@ -34,7 +34,7 @@ end
         game = league.games.create!({
             winner_id: winner,
             player1_id: winner,
-            player2_id: User.find(rand(1...User.all.count)),
+            player2_id: User.find(rand(1...User.all.count)).id,
         })
         game.save
     end
@@ -42,8 +42,8 @@ end
     rand(1...5).times do
         league.games.create!({
             winner_id: nil,
-            player1_id: User.find(rand(1...User.all.count)),
-            player2_id: User.find(rand(1...User.all.count)),
+            player1_id: User.find(rand(1...User.all.count)).id,
+            player2_id: User.find(rand(1...User.all.count)).id,
         })
     end
 end 
@@ -59,7 +59,7 @@ end
         game = league.games.create!({
             winner_id: winner,
             player1_id: winner,
-            player2_id: User.find(rand(1...User.all.count)),
+            player2_id: User.find(rand(1...User.all.count)).id,
         })
         game.save
     end

@@ -1,0 +1,10 @@
+<nav>
+    <%= link_to "Home", root_url %>
+    <%= link_to "Leagues", leagues_url %>
+
+    <% if signed_in? -%>
+      <%= link_to t(".sign_out"), sign_out_path, method: :delete %>
+    <% else -%>
+      <%= link_to t(".sign_in"), sign_in_path %>
+    <% end -%>
+</nav>

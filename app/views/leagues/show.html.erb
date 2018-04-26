@@ -1,8 +1,15 @@
 <h1><%= @league.name %></h1>
 
 <h3>LeaderBoard</h3>
-<ol>
-    <% @league.scores.each do |key, value| %>
-        <li><%= value %></li>
+<ul>
+    <% @league.scores.each do |score| %>
+        <li><%= score[:user][:name] %> - <%= score[:total] %></li>
     <% end %>
-</ol>
+</ul>
+
+<h3>Games</h3>
+<ul>
+    <% @league.games.each do |game| %>
+        <li><%= game.player1.name %> VS <%= game.player2.name %> - <strong><%= game.winner.name %> Won!</strong></li>
+    <% end %>
+</ul>
