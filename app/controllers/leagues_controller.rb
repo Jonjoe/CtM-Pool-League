@@ -22,7 +22,7 @@ class LeaguesController < ApplicationController
         league.owner_id = current_user.id
         league.save
 
-        redirect_to leagues_path
+        redirect_to league_path(league)
     end
 
     # ------------ Bespoke Actions
