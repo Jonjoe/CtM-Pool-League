@@ -1,7 +1,9 @@
 class LeaguesController < ApplicationController
     def index
-        @ongoing_leagues = League.where(winner_id: nil)
-        @completed_leagues = League.where.not(winner_id: nil)
+        @ongoing_leagues = League.where(winner_id: nil).where(archived: false)
+        @completed_leagues = League.where.not(winner_id: nil).where(archived: false)
+
+        @archived_leagues = League.where(archived: true)
     end 
 
     def show

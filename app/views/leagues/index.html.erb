@@ -15,3 +15,10 @@
         <li><%= league.name %> - <%= link_to "View League", league_path(league) %></li>
     <% end %>
 </ul>
+
+<h3>Archived Leagues</h3>
+<ul>
+    <% @archived_leagues.each do |league| %>
+        <li><%= league.name %> - <%= link_to "View League", league_path(league) %></li>
+    <% end %>
+</ul>

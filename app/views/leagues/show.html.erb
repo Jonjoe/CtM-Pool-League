@@ -1,6 +1,9 @@
 <h1><%= @league.name %></h1>
+<h2>By <%= @league.owner.name %></h2>
+<hr />
 
 <h3>LeaderBoard</h3>
+
 <ul>
     <% @league.scores.each do |score| %> 
         <li><%= score[:user][:name] %> - <%= score[:total] %></li>

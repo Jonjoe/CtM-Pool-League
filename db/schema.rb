@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_04_26_091631) do
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
+    t.boolean "archived", default: false
     t.integer "owner_id"
     t.integer "winner_id"
     t.datetime "created_at", null: false

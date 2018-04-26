@@ -23,6 +23,7 @@ User.create!({
     })
 end 
 
+# Ongoing Leagues
 3.times do
     league = League.create!({
         name: Faker::Team.name,
@@ -48,6 +49,7 @@ end
     end
 end 
 
+# Completed Leagues
 12.times do
     league = League.create!({
         name: Faker::Team.name,
@@ -66,3 +68,33 @@ end
 
     league.assign_winner
 end 
+
+
+# Archived Leagues
+3.times do
+    league = League.create!({
+        name: Faker::Team.name,
+        owner_id: User.find(rand(1...User.all.count)).id,
+        archived: true
+    })
+
+    4.times do
+        winner = User.find(rand(1...User.all.count)).id
+        game = league.games.create!({
+            winner_id: winner,
+            player1_id: winner,
+            player2_id: User.find(rand(1...User.all.count)).id,
+        })
+        game.save
+    end
+
+    rand(1...5).times do
+        league.games.create!({
+            winner_id: nil,
+            player1_id: User.find(rand(1...User.all.count)).id,
+            player2_id: User.find(rand(1...User.all.count)).id,
+        })
+    end
+end  
+
+
