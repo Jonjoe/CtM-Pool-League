@@ -5,11 +5,35 @@
 <% else %>
 
     <% if @game.league.owner === current_user then %>
-        <h3>Who won?</h3>
-        <%= link_to "#{@game.player1.name}", league_game_player1_won_path(@game.league, @game) %>
-        <br />
-        <%= link_to "#{@game.player2.name}", league_game_player2_won_path(@game.league, @game) %>
-    <% else %>
-        <p>Game not played yet</p>
+        <article class="Game" style="width:100%; margin: 0 auto;">
+            <div class="UserCard">
+                <header class="UserCardHeader">
+                    <%= image_tag  "avatar" %>
+                </header>
+                <section class="UserCardBody">
+                    <%= @game.player1.name %>
+                </section>
+
+                <footer class="UserCardFooter">
+                    <br />
+                    <%= link_to "Assign the win!", league_game_player1_won_path(@game.league, @game), class: "Button" %>
+                </footer>
+            </div>
+
+            <span class="Vs">VS</span>
+
+            <div class="UserCard">
+                <header class="UserCardHeader">
+                    <%= image_tag  "avatar" %>
+                </header>
+                <section class="UserCardBody">
+                    <%= @game.player2.name %>
+                </section>
+                <footer class="UserCardFooter">
+                    <br />
+                    <%= link_to "Assign the win!", league_game_player2_won_path(@game.league, @game), class: "Button" %>
+                </footer>
+            </div>
+        </article>
     <% end %>
 <% end %>
