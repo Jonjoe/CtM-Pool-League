@@ -1,4 +1,12 @@
-<%= form_for( @league) do |form| %>
-    <%= form.text_field :name %>
-    <%= form.submit %>
-<% end %>
+<div class="Box Box-isCentered">
+    <div class="Form">
+        <%= form_for( @league) do |form| %>
+            <div class="InputGroup">
+                <%= form.label :name, class: "InputLabel" %>    
+                <%= form.text_field :name, class: "InputField" %>
+            </div>
+            
+            <%= form.submit :class => "Button Button-isPrimary" %>
+        <% end %>
+    </div>
+</div>

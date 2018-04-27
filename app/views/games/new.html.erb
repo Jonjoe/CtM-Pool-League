@@ -1,15 +1,21 @@
-<h1>Game New</h1>
+<div class="Box Box-isCentered">
+    <div class="Form">
+        <%= form_for([@league, @game]) do |form| %>
+            <div class="InputGroup">
+                <%= form.label :player1, 'Player 1', class: "InputLabel" %>  
+                <%= form.select(:player1_id) do %>
+                    <%= options_from_collection_for_select(@users, "id", "name") %>
+                <% end %>
+            </div>
 
-<%= form_for([@league, @game]) do |form| %>
-    <p>Player 1</p>
-    <%= form.select(:player1_id) do %>
-        <%= options_from_collection_for_select(@users, "id", "name") %>
-    <% end %>
+            <div class="InputGroup">
+                <%= form.label :player2, 'Player 2', class: "InputLabel" %>  
+                <%= form.select(:player2_id) do %>
+                    <%= options_from_collection_for_select(@users, "id", "name") %>
+                <% end %>
+            </div>
 
-    <p>Player 2</p>
-    <%= form.select(:player2_id) do %>
-        <%= options_from_collection_for_select(@users, "id", "name") %>
-    <% end %>
-
-    <%= form.submit %>
-<% end %>
+            <%= form.submit :class => "Button Button-isPrimary" %>
+        <% end %>
+    </div>
+</div>

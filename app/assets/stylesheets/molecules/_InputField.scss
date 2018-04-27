@@ -1,0 +1,6 @@
+.InputField {
+    padding: $gap;
+    &:focus {
+        outline: none;
+    }
+}

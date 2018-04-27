@@ -31,10 +31,15 @@ $border: 1px solid $pallet4;
  
  @import 'molecules/_Alert.scss';
  @import 'molecules/_Button.scss';
+ @import 'molecules/_Box.scss';
+ @import 'molecules/_InputGroup.scss';
+ @import 'molecules/_InputLabel.scss';
+ @import 'molecules/_InputField.scss';
 
  @import 'organisms/_ScoreBoard.scss';
  @import 'organisms/_Tools.scss';
  @import 'organisms/_Card.scss';
+ @import 'organisms/_Form.scss';
  @import 'organisms/_UserCard.scss';
  @import 'organisms/_Game.scss';
  @import 'organisms/_Navigation.scss';

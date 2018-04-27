@@ -1,0 +1,9 @@
+.Form {
+    width: 100%;
+    .Button {
+        width: 100%;
+        margin-bottom: $gap;
+        padding-top: $gap*2;
+        padding-bottom: $gap*2;
+    }
+}

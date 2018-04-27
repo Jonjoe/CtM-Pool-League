@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    padding: $gap * 2 0;
 }
 
 .Game {
@@ -12,5 +13,14 @@
     min-width: 400px;
     max-width: 400px;
     margin: 20px;
+    padding-bottom: $gap * 3;
     justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    .Tools {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
 }

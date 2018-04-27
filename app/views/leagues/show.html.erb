@@ -62,6 +62,12 @@
                         <%= game.player2.name %>
                     </section>
                 </div>
+
+                <% if current_user === @league.owner then %>
+                    <div class="Tools">
+                        <%= link_to "Decide the victor!", league_game_path(@league, game), class: "Button Button-isPrimary" %>
+                    </div>
+                <% end %>
             </article>
         <% end %>
     </section>
