@@ -3,6 +3,7 @@
     <%= link_to "Leagues", leagues_url %>
 
     <% if signed_in? -%>
+      <%= link_to "Invite Someone", invite_user_path %>
       <%= link_to t(".sign_out"), sign_out_path, method: :delete %>
     <% else -%>
       <%= link_to t(".sign_in"), sign_in_path %>

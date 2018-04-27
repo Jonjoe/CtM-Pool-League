@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_04_26_091631) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "role"
+    t.string "invite_token"
     t.boolean "invited", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

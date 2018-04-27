@@ -1,0 +1,17 @@
+<h1>Welcome!</h1>
+
+<% if @user then %>
+    <%= form_tag('/invite/create', method: "post") do %>
+        <p>Full Name</p>
+        <%= text_field_tag(:name) %>
+        <p>Email Address</p>
+        <%= text_field_tag(:email, @user.email) %>
+        <p>Password</p>
+        <%= text_field_tag(:new_password) %>
+        <p>Password Again</p>
+        <%= text_field_tag(:new_password_again) %>
+        <%= submit_tag("Complete sign up") %>
+    <% end %>
+<% else %>
+    <p>Bad</p>
+<% end %>

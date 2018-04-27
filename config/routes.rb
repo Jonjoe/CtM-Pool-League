@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   end
   
   resources :users
+  
   get "/invite" => "users#invite", as: "invite_user"        
+  post "/invite/precreate" => "users#invite_pre_create", as: "invite_user_precreate"        
+  get "/invited/:code" => "users#manage_invited", as: "manage_invited_user"        
   post "/invite/create" => "users#invite_create", as: "invite_user_create"        
 
   resources :leagues do
