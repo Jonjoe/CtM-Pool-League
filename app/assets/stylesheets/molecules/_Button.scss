@@ -1,0 +1,8 @@
+.Button {
+    margin: $gap;
+    text-decoration: none;
+    background: $info;
+    padding: $gap / 2 $gap * 2;
+    color: white;
+    border-bottom: 4px solid darken($info, 20)
+}

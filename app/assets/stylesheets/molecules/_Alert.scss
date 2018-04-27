@@ -1,0 +1,14 @@
+.Alert {
+    width: 100%;
+    text-align: center;
+    border: $border;
+    padding: $gap 0 $gap 0;
+    margin-bottom: $gap/2;
+    &-isNotice {
+        background: $info;
+    }
+
+    &-isWarning {
+        background: $warning;
+    }
+}

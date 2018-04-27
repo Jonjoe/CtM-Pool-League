@@ -1,8 +1,14 @@
 <h3>Ongoing Leagues</h3>
-<ul>
     <% if @ongoing_leagues.count > 0 %>
         <% @ongoing_leagues.each do |league| %>
-            <li><%= league.name %> - <%= link_to "View League", league_path(league) %></li>
+            <article class="Card">
+                <section class="CardBody">
+                    <%= league.name %>
+                <section>
+                <footer class="CardFooter">
+                    <%= link_to "View League", league_path(league) %>
+                </footer>
+            </article>
         <% end %>
 
     <% else %>
@@ -10,9 +16,15 @@
     <% end %>
 </ul>
 
-<h3>Top 5</h3>
-<ol>
-    <% @top5_players.each do | score | %>
-        <li><%= score[:user][:name] %> - <%= score[:total]%> Wins</li>
-    <% end %>
-</ol>
+<section class="Row">
+    <h2>Top 5</h2>
+    <ul class="ScoreBoard">
+        <% @top5_players.each_with_index do |score, index| %> 
+            <li class="ScoreBoardPlayer">
+                <span class="ScoreBoardPosition"><%= index + 1 %></span>
+                <h4 class="ScoreBoardName"><%= score[:user][:name] %></h4>
+                <span class="ScoreBoardScore"><%= score[:total] %> pts</span>
+            </li>
+        <% end %>
+    </ul>
+</section>

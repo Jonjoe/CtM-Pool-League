@@ -1,0 +1,27 @@
+.UserCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &Header {
+        display: flex;
+        position :relative;
+        padding-bottom: $gap;
+        img {
+            height: 100px;
+            width: 100px;
+        }
+    }
+
+    &Cross {
+        position: absolute;
+        left: 20px;
+    }
+
+    &Section {
+
+    }
+    
+    &Footer {
+
+    }
+}

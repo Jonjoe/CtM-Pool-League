@@ -1,15 +1,40 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
  *= require_self
  */
+
+$pallet1: #bada55;
+$pallet2: #bada55;
+$pallet3: #bada55;
+$pallet4: #333;
+$pallet5: #bada55;
+$pallet6: #bada55;
+
+$warning: rgba(230,126,34, 0.5);
+$info: rgba(52,152,219, 0.5);
+
+$gap: 10px;
+
+$bronze:#cd7f32;
+$silver:#c0c0c0;
+$gold:#facf84;
+
+$border: 1px solid $pallet4;
+
+ @import 'utilities/_reset.scss';
+ @import 'utilities/_typography.scss';
+
+ @import 'layout/_Main.scss';
+ @import 'layout/_VsGrid.scss';
+ @import 'layout/_Row.scss';
+
+ @import 'atoms/_Vs.scss';
+ 
+ @import 'molecules/_Alert.scss';
+ @import 'molecules/_Button.scss';
+
+ @import 'organisms/_ScoreBoard.scss';
+ @import 'organisms/_Tools.scss';
+ @import 'organisms/_Card.scss';
+ @import 'organisms/_UserCard.scss';
+ @import 'organisms/_Game.scss';
+ @import 'organisms/_Navigation.scss';

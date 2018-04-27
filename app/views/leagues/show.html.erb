@@ -1,32 +1,9 @@
-<% if @league.archived then %>
-    <div>
-        <strong>This league has been archived</strong>
-    </div>
-<% end %>
-
-<% if @league.winner then %>
-    <div>
-        <strong>This league has is now closed</strong>
-    </div>
-<% end %>
-
-<% if @league.draw_mode then %>
-    <div>
-        <strong>League cannot be closed until there is a winner!</strong>
-    </div>
-<% end %>
-
-<h1><%= @league.name %></h1>
-<h2>Owned by <%= @league.owner.name %></h2>
-
 <% if @league.owner === current_user %>
-    <div>
-        <%= link_to "Archive League", league_archive_path(@league) %>
-        <%= link_to "Close League", league_close_path(@league) %>
+    <div class="Tools">
+        <%= link_to "Archive League", league_archive_path(@league), class: "Button Button-isPrimary"  %>
+        <%= link_to "Close League", league_close_path(@league), class: "Button Button-isPrimary" %>
     </div>
 <% end %>
-
-<hr />
 
 <% if @league.winner %>
 <div>
@@ -34,35 +11,58 @@
 </div>
 <% end %>
 
-<h3>LeaderBoard</h3>
 
-<ul>
-    <% @league.scores.each do |score| %> 
-        <li><%= score[:user][:name] %> - <%= score[:total] %></li>
+<section class="Row">
+    <h2>LeaderBoard</h2>
+    <ul class="ScoreBoard">
+        <% @league.scores.each_with_index do |score, index| %> 
+            <li class="ScoreBoardPlayer">
+                <span class="ScoreBoardPosition"><%= index + 1 %></span>
+                <h4 class="ScoreBoardName"><%= score[:user][:name] %></h4>
+                <span class="ScoreBoardScore"><%= score[:total] %> pts</span>
+            </li>
+        <% end %>
+    </ul>
+</section>
+
+<section class="Row">
+    <h2>Games</h2>
+
+    <% if @league.owner === current_user %>
+        <div class="Tools">
+            <%= link_to "Create a new game", new_league_game_path(@league), class: "Button Button-isPrimary" %>
+        </div>
     <% end %>
-</ul>
 
-<h3>Games</h3>
+    <section class="Games">
+        <% @league.games.each do |game| %>
+            <article class="Game">
+                <div class="UserCard">
+                    <header class="UserCardHeader">
+                        <%= image_tag  "avatar" %>
+                        <% if game.winner and game.winner != game.player1 then %>
+                            <%= image_tag "cross", class: "UserCardCross" %>
+                        <% end %>
+                    </header>
+                    <section class="UserCardBody">
+                        <%= game.player1.name %>
+                    </section>
+                </div>
+                
+                <span class="Vs">VS</span>
 
-<% if @league.owner === current_user %>
-    <div>
-        <%= link_to "Create a new game", new_league_game_path(@league) %>
-    </div>
-<% end %>
-
-<ul>
-    <% @league.games.each do |game| %>
-        <li>
-            <%= game.player1.name %> VS <%= game.player2.name %> - 
-            <% if @league.owner === current_user %>            
-                <%= link_to "Trash game", league_game_path(@league, game), method: :delete %> -
-            <% end %>
-            <%= link_to "View Game", league_game_path(@league, game) %> |
-            <% if game.winner %>
-                <strong><%= game.winner.name %> Won!</strong>
-            <% else %>
-                <strong> Game has not been played yet </strong>            
-            <% end %>
-        </li>
-    <% end %>
-</ul>
+                <div class="UserCard">
+                    <header class="UserCardHeader">
+                        <%= image_tag  "avatar" %>
+                        <% if game.winner and game.winner != game.player2 %>
+                            <%= image_tag "cross", class: "UserCardCross" %>
+                        <% end %>
+                    </header>
+                    <section class="UserCardBody">
+                        <%= game.player2.name %>
+                    </section>
+                </div>
+            </article>
+        <% end %>
+    </section>
+</section>

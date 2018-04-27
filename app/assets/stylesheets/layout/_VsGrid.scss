@@ -1,0 +1,16 @@
+.VsGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: $gap;
+    justify-content: center;
+    align-items: center;
+    .UserCard {
+        flex: 1
+    }
+    &Footer {
+        width: 100%;
+        text-align: center;
+        padding: $gap;
+    }
+}

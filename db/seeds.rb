@@ -80,7 +80,7 @@ User.create!({
         owner_id: User.find(rand(1...User.all.count)).id
     })
 
-    4.times do
+    2.times do
         winner = User.find(rand(1...User.all.count)).id
         game = league.games.create!({
             winner_id: winner,
@@ -90,7 +90,7 @@ User.create!({
         game.save
     end
 
-    rand(1...5).times do
+    rand(1...3).times do
         league.games.create!({
             winner_id: nil,
             player1_id: User.find(rand(1...User.all.count)).id,
@@ -106,7 +106,7 @@ end
         owner_id: User.find(rand(1...User.all.count)).id
     })
 
-    15.times do
+    5.times do
         winner = User.find(rand(1...User.all.count)).id
         game = league.games.create!({
             winner_id: winner,
@@ -127,7 +127,7 @@ end
         archived: true
     })
 
-    4.times do
+    2.times do
         winner = User.find(rand(1...User.all.count)).id
         game = league.games.create!({
             winner_id: winner,
@@ -137,7 +137,7 @@ end
         game.save
     end
 
-    rand(1...5).times do
+    rand(1...3).times do
         league.games.create!({
             winner_id: nil,
             player1_id: User.find(rand(1...User.all.count)).id,

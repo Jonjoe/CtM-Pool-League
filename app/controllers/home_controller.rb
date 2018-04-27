@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    @title = "Home"
+    
     if signed_in? then
       @ongoing_leagues = League.where(owner: current_user)
     else 
