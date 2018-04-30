@@ -1,6 +1,12 @@
-<h1>Invite someone</h1>
+<div class="Box Box-isCentered">
+    <div class="Form">
+        <%= form_for(@user, :url => invite_user_precreate_path ) do |form| %>
+            <div class="InputGroup">
+                <%= form.label :email, class: "InputLabel" %>    
+                <%= form.text_field :email %>
+            </div>
 
-<%= form_for(@user, :url => invite_user_precreate_path ) do |form| %>
-    <%= form.text_field :email %>
-    <%= form.submit 'Invite' %>
-<% end %>
+            <%= form.submit 'Invite', :class => "Button Button-isPrimary" %>
+        <% end %> 
+    </div>
+</div>

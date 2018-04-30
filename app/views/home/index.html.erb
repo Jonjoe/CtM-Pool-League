@@ -1,4 +1,18 @@
-<h3>Ongoing Leagues</h3>
+<section class="Row">
+    <h2>Top 5</h2>
+    <ul class="ScoreBoard">
+        <% @top5_players.each_with_index do |score, index| %> 
+            <li class="ScoreBoardPlayer">
+                <span class="ScoreBoardPosition"><%= index + 1 %></span>
+                <h4 class="ScoreBoardName"><%= score[:user][:name] %></h4>
+                <span class="ScoreBoardScore"><%= score[:total] %> pts</span>
+            </li>
+        <% end %>
+    </ul>
+</section>
+
+<section class="Row">
+<h2>Your Leagues</h2>
     <% if @ongoing_leagues.count > 0 %>
         <% @ongoing_leagues.each do |league| %>
             <article class="Card">
@@ -14,17 +28,4 @@
     <% else %>
         <p>You are not part of any leagues</p>
     <% end %>
-</ul>
-
-<section class="Row">
-    <h2>Top 5</h2>
-    <ul class="ScoreBoard">
-        <% @top5_players.each_with_index do |score, index| %> 
-            <li class="ScoreBoardPlayer">
-                <span class="ScoreBoardPosition"><%= index + 1 %></span>
-                <h4 class="ScoreBoardName"><%= score[:user][:name] %></h4>
-                <span class="ScoreBoardScore"><%= score[:total] %> pts</span>
-            </li>
-        <% end %>
-    </ul>
 </section>

@@ -19,6 +19,7 @@ class LeaguesController < ApplicationController
     end  
 
     def new
+        @title = "Start a new league"
         @league = League.new
     end 
 

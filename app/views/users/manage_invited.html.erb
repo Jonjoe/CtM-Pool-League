@@ -1,17 +1,26 @@
-<h1>Welcome!</h1>
+<div class="Box Box-isCentered">
+    <div class="Form">
 
-<% if @user then %>
-    <%= form_tag('/invite/create', method: "post") do %>
-        <p>Full Name</p>
-        <%= text_field_tag(:name) %>
-        <p>Email Address</p>
-        <%= text_field_tag(:email, @user.email) %>
-        <p>Password</p>
-        <%= text_field_tag(:new_password) %>
-        <p>Password Again</p>
-        <%= text_field_tag(:new_password_again) %>
-        <%= submit_tag("Complete sign up") %>
-    <% end %>
-<% else %>
-    <p>Bad</p>
-<% end %>
+        <% if @user then %>
+            <%= form_tag('/invite/create', method: "post") do %>
+<div class="InputGroup">
+                <p>Full Name</p>
+                <%= text_field_tag(:name) %>
+</div>
+<div class="InputGroup">
+                <p>Email Address</p>
+                <%= text_field_tag(:email, @user.email) %>
+</div>
+<div class="InputGroup">
+                <p>Password</p>
+                <%= text_field_tag(:new_password) %>
+                <p>Password Again</p>
+                <%= text_field_tag(:new_password_again) %>
+</div>
+                <%= submit_tag("Complete sign up",  :class => "Button Button-isPrimary") %>
+            <% end %>
+        <% else %>
+            <p>Bad</p>
+        <% end %>
+    </div>
+</div>

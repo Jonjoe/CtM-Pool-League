@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     before_action :require_login, except: :manage_invited
    
     def invite
+        @title = "Invite someone ..."
         @user = User.new
     end 
 
